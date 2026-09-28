@@ -5,10 +5,7 @@ import android.bluetooth.BluetoothAvrcpController
 import android.bluetooth.BluetoothHeadsetClient
 import android.bluetooth.BluetoothPbapClient
 import android.bluetooth.BluetoothProfile
-import android.os.SystemClock
 import android.telecom.Call
-import android.view.View
-import com.bmit.lib_core.LogUtil
 
 /**
  * Author: created by huhuaijun on 2026/9/24 17:50
@@ -41,25 +38,6 @@ fun String.bluetoothActionType(): String{
         BluetoothPbapClient.ACTION_CONNECTION_STATE_CHANGED-> "PBAP"
         else -> "NONE"
 
-    }
-}
-
-
-fun View.setDebounceClickListener(
-    interval: Long = 500L,
-    onClick: (View) -> Unit
-) {
-    var lastClickTime = 0L
-
-    setOnClickListener { view ->
-        val currentTime = SystemClock.elapsedRealtime()
-
-        if (currentTime - lastClickTime < interval) {
-            return@setOnClickListener
-        }
-
-        lastClickTime = currentTime
-        onClick(view)
     }
 }
 

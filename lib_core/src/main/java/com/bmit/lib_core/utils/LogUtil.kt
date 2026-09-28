@@ -1,4 +1,4 @@
-package com.bmit.lib_core
+package com.bmit.lib_core.utils
 
 import android.util.Log
 import org.json.JSONArray
@@ -681,7 +681,7 @@ object LogUtil {
         fun verbose(
             message: String
         ) {
-            LogUtil.v(
+            v(
                 message,
                 tag
             )
@@ -690,7 +690,7 @@ object LogUtil {
         fun debug(
             message: String
         ) {
-            LogUtil.d(
+            d(
                 message,
                 tag
             )
@@ -699,7 +699,7 @@ object LogUtil {
         fun info(
             message: String
         ) {
-            LogUtil.i(
+            i(
                 message,
                 tag
             )
@@ -708,7 +708,7 @@ object LogUtil {
         fun warn(
             message: String
         ) {
-            LogUtil.w(
+            w(
                 message,
                 tag
             )
@@ -718,7 +718,7 @@ object LogUtil {
             message: String,
             throwable: Throwable? = null
         ) {
-            LogUtil.e(
+            e(
                 message,
                 throwable,
                 tag
@@ -728,7 +728,7 @@ object LogUtil {
         fun json(
             jsonStr: String
         ) {
-            LogUtil.json(
+            json(
                 jsonStr,
                 tag
             )
@@ -737,7 +737,7 @@ object LogUtil {
         fun long(
             message: String
         ) {
-            LogUtil.long(
+            long(
                 message,
                 tag
             )
@@ -747,7 +747,7 @@ object LogUtil {
             operationName: String,
             crossinline block: () -> T
         ): T {
-            return LogUtil.measureTime(
+            return measureTime(
                 operationName,
                 tag
             ) {

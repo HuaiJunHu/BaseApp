@@ -1,7 +1,13 @@
 package com.bmit.lib_core.base_ui
 
-import androidx.fragment.app.Fragment
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.bmit.lib_core.utils.LogUtil
 
 /**
  * Author: created by huhuaijun on 2026/9/28 11:18
@@ -14,19 +20,23 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
         get() = _binding
             ?: throw IllegalStateException("Binding is only valid between onCreate and onDestroy")
 
-    protected val viewModel: VM by lazy {
+    private val activityName: String
+        get() = this::class.java.simpleName
+
+
+    protected val viewModel: VM by lazy(LazyThreadSafetyMode.NONE) {
         ViewModelProvider(this)[getViewModelClass()]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        LogUtil.d("onCreate: $activityName")
         _binding = createViewBinding(layoutInflater)
         setContentView(binding.root)
 
         initView()
         initListener()
-        observeData()
+        initObserver()
         initData()
     }
 
@@ -55,7 +65,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     /**
      * 观察 ViewModel 数据
      */
-    protected open fun observeData() {
+    protected open fun initObserver() {
     }
 
     /**
@@ -64,8 +74,19 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     protected open fun initData() {
     }
 
+    override fun onResume(){
+        LogUtil.d("onResume: $activityName")
+        super.onResume()
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        LogUtil.d("onNewIntent: $activityName")
+        super.onNewIntent(intent)
+    }
+
     override fun onDestroy() {
         _binding = null
+        LogUtil.d("onDestroy: $activityName")
         super.onDestroy()
     }
 }
