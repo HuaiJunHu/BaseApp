@@ -1,4 +1,4 @@
-package com.bmit.lib_core
+package com.bmit.lib_core.utils
 
 import android.app.Application
 import android.os.Handler

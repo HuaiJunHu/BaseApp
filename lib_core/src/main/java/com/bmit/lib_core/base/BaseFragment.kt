@@ -1,20 +1,23 @@
-package com.bmit.lib_core.base_ui
+package com.bmit.lib_core.base
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.bmit.lib_core.utils.GlobalApp
+import com.bmit.lib_core.utils.LogUtil
+import com.bmit.lib_core.utils.isDarkMode
 
 /**
  * Author: created by huhuaijun on 2026/9/28 11:25
  * Function:
  */
-abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> :
+abstract class BaseFragment<VB : ViewBinding, VM : BaseModel> :
     Fragment() {
 
     private var _binding: VB? = null
@@ -78,8 +81,40 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> :
     protected open fun initData() {
     }
 
+    protected open fun onLanguageChange(){
+        LogUtil.d("onLanguageChange: $fragmentName")
+
+
+    }
+
+    protected open fun onDarkModeChange(){
+        LogUtil.d("onDarkModeChange: $fragmentName")
+    }
+
+    protected open fun onThemeChange(){}
+
+
+    override fun onResume() {
+        super.onResume()
+        LogUtil.d("onResume: $fragmentName")
+    }
+
     override fun onDestroyView() {
         _binding = null
+        LogUtil.d("onDestroyView: $fragmentName")
         super.onDestroyView()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val changeLanguage = newConfig.locales[0].toLanguageTag()
+        if (changeLanguage!= viewModel.language) {
+            viewModel.language = changeLanguage
+            onLanguageChange()
+        }
+        if (GlobalApp.isDarkMode() != viewModel.isDarkMode){
+            viewModel.isDarkMode = GlobalApp.isDarkMode()
+            onDarkModeChange()
+        }
     }
 }

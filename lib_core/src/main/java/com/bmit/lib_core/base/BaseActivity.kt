@@ -1,19 +1,22 @@
-package com.bmit.lib_core.base_ui
+package com.bmit.lib_core.base
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.bmit.lib_core.manager.SystemManager
+import com.bmit.lib_core.utils.GlobalApp
 import com.bmit.lib_core.utils.LogUtil
+import com.bmit.lib_core.utils.isDarkMode
 
 /**
  * Author: created by huhuaijun on 2026/9/28 11:18
  * Function:
  */
-abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding, VM : BaseModel> : AppCompatActivity() {
 
     private var _binding: VB? = null
     protected val binding: VB
@@ -74,6 +77,18 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     protected open fun initData() {
     }
 
+    protected open fun onLanguageChange(){
+        LogUtil.d("onLanguageChange: $activityName")
+
+    }
+
+    protected open fun onDarkModeChange(){
+        LogUtil.d("onDarkModeChange: $activityName")
+
+    }
+
+    protected open fun onThemeChange(){}
+
     override fun onResume(){
         LogUtil.d("onResume: $activityName")
         super.onResume()
@@ -88,5 +103,18 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
         _binding = null
         LogUtil.d("onDestroy: $activityName")
         super.onDestroy()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val changeLanguage = newConfig.locales[0].toLanguageTag()
+        if (changeLanguage!= viewModel.language) {
+            viewModel.language = changeLanguage
+            onLanguageChange()
+        }
+        if (GlobalApp.isDarkMode() != viewModel.isDarkMode){
+            viewModel.isDarkMode = GlobalApp.isDarkMode()
+            onDarkModeChange()
+        }
     }
 }
