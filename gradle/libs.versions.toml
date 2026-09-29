@@ -27,3 +27,5 @@ androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", v
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = {id = "com.android.library"}
+maven-publish = {id = "maven-publish"}
