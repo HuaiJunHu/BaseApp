@@ -1,6 +1,6 @@
 [versions]
 agp = "9.2.1"
-baseapp = "1.0.2"
+baseapp = "1.0.4"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -16,7 +16,7 @@ bmitCore  = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-baseapp = { module = "com.github.HuaiJunHu.BaseApp:lib_core", version.ref = "baseapp" }
+baseapp = { module = "com.github.HuaiJunHu:BaseApp", version.ref = "baseapp" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

@@ -2,9 +2,3 @@
 plugins {
     alias(libs.plugins.android.application) apply false
 }
-
-allprojects {
-    plugins.withId('maven-publish') {
-        // 只是为了让 JitPack 识别到根工程和子工程的层级差异
-    }
-}
