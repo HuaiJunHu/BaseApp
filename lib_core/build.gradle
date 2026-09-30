@@ -1,10 +1,10 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.maven.publish)
 }
 
-group = 'com.bmit.lib_core'
-version = '1.0.0'
 
 android {
     namespace 'com.bmit.lib_core'
@@ -38,6 +38,13 @@ android {
         singleVariant('release') {
             withSourcesJar()
         }
+    }
+}
+kotlin {
+    compilerOptions {
+        // 强制让 2.2.10 编译器输出兼容 2.0 的字节码格式
+        languageVersion.set(KotlinVersion.KOTLIN_2_0)
+        apiVersion.set(KotlinVersion.KOTLIN_2_0)
     }
 }
 
