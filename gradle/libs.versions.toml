@@ -11,6 +11,7 @@ fragment-ktx = "1.8.5"
 activity-ktx = "1.9.3"
 constraintlayout = "2.2.0"
 viewbinding = "9.4.1"
+bmitCore  = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,6 +25,7 @@ fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-ktx" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
+bmi-core = {group = "com.bmit.lib_core", name = "bt" ,version.ref = "bmitCore"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

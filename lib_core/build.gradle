@@ -41,34 +41,51 @@ android {
     }
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.bmit.lib_core'
-            artifactId = 'bt'
-            version = '1.0.0'
+// jitpack方式
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release // 打包 release 变体
 
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            name = 'GitHubPackages'
-
-            url = uri(
-                    'https://maven.pkg.github.com/HuaiJunHu/BaseApp'
-            )
-
-            credentials {
-                username = providers.gradleProperty('gpr.user').orNull
-                password = providers.gradleProperty('gpr.key').orNull
+                // 2. 显式指定 artifactId 为你的子模块名字
+                artifactId = 'lib_core'
             }
         }
     }
 }
+
+
+
+//maven托管方式
+//publishing {
+//    publications {
+//        release(MavenPublication) {
+//            groupId = 'com.bmit.lib_core'
+//            artifactId = 'bt'
+//            version = '1.0.0'
+//
+//            afterEvaluate {
+//                from components.release
+//            }
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+//            name = 'GitHubPackages'
+//
+//            url = uri(
+//                    'https://maven.pkg.github.com/HuaiJunHu/BaseApp'
+//            )
+//
+//            credentials {
+//                username = providers.gradleProperty('gpr.user').orNull
+//                password = providers.gradleProperty('gpr.key').orNull
+//            }
+//        }
+//    }
+//}
 
 dependencies {
     implementation libs.androidx.appcompat

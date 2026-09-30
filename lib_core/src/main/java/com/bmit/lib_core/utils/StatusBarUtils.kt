@@ -18,8 +18,8 @@ fun Activity.transparentStatusBar(
     WindowCompat.setDecorFitsSystemWindows(window, !isFullScreen)
 
     // 2. 清除半透明标志，启用系统栏背景绘制
-    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+//    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
     // 3. 设置透明颜色
