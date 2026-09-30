@@ -28,21 +28,21 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven {
-            name = "GitHubPackages"
-
-            url = uri("https://maven.pkg.github.com/HuaiJunHu/BaseApp")
-
-            credentials {
-                username = providers.gradleProperty("gpr.user")
-                        .orNull
-
-                password = providers.gradleProperty("gpr.key")
-                        .orNull
-                println "GitHub Packages user = ${username}"
-                println "GitHub Packages token exists = ${password != null && !password.isEmpty()}"
-            }
-        }
+//        maven {
+//            name = "GitHubPackages"
+//
+//            url = uri("https://maven.pkg.github.com/HuaiJunHu/BaseApp")
+//
+//            credentials {
+//                username = providers.gradleProperty("gpr.user")
+//                        .orNull
+//
+//                password = providers.gradleProperty("gpr.key")
+//                        .orNull
+//                println "GitHub Packages user = ${username}"
+//                println "GitHub Packages token exists = ${password != null && !password.isEmpty()}"
+//            }
+//        }
     }
 }
 
