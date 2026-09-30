@@ -10,10 +10,11 @@ import androidx.core.view.WindowCompat
  * Function:
  */
 
-fun Activity.transparentStatusBar(
+fun transparentStatusBar(activity: Activity,
     isDark: Boolean = false,
     isFullScreen: Boolean = true,
 ) {
+    val window = activity.window
     // 1. 设置让内容延伸到状态栏和导航栏下方（全屏布局），但不会隐藏状态栏
     WindowCompat.setDecorFitsSystemWindows(window, !isFullScreen)
 
