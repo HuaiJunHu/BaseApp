@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.bmit.lib_core.utils.GlobalApp
+import com.bmit.lib_core.expend.GlobalApp
 import com.bmit.lib_core.utils.LogUtil
-import com.bmit.lib_core.utils.isDarkMode
+import com.bmit.lib_core.expend.isDarkMode
 
 /**
  * Author: created by huhuaijun on 2026/9/28 11:25

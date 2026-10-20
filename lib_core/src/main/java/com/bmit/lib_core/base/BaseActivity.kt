@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.bmit.lib_core.manager.SystemManager
-import com.bmit.lib_core.utils.GlobalApp
+import com.bmit.lib_core.expend.GlobalApp
 import com.bmit.lib_core.utils.LogUtil
-import com.bmit.lib_core.utils.isDarkMode
+import com.bmit.lib_core.expend.isDarkMode
 
 /**
  * Author: created by huhuaijun on 2026/9/28 11:18

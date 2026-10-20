@@ -1,11 +1,16 @@
 package com.bmit.lib_core.base
 
+import android.app.Activity
 import android.app.Application
 import android.content.res.Configuration
-import com.bmit.lib_core.manager.SystemManager
-import com.bmit.lib_core.utils.GlobalApp
+import android.database.ContentObserver
+import android.os.Bundle
+import android.provider.Settings
+import com.bmit.lib_core.system.SystemManager
+import com.bmit.lib_core.expend.GlobalApp
+import com.bmit.lib_core.expend.MainHandler
 import com.bmit.lib_core.utils.LogUtil
-import com.bmit.lib_core.utils.isDarkMode
+import com.bmit.lib_core.expend.isDarkMode
 
 /**
  * Author: created by huhuaijun on 2026/9/29 13:54
@@ -18,6 +23,9 @@ class BaseApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         LogUtil.i("Application onCreate")
+        registerActivityLifecycle()
+        SystemManager.init()
+
 
     }
 
@@ -41,4 +49,27 @@ class BaseApplication: Application() {
             SystemManager.updateDarkMode(currentDarkMode)
         }
     }
+
+    private fun registerActivityLifecycle() {
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                SystemManager.activities.add(activity)
+            }
+
+            override fun onActivityStarted(activity: Activity) {}
+
+            override fun onActivityResumed(activity: Activity) {}
+
+            override fun onActivityPaused(activity: Activity) {}
+
+            override fun onActivityStopped(activity: Activity) {}
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+
+            override fun onActivityDestroyed(activity: Activity) {
+                SystemManager.activities.remove(activity)
+            }
+        })
+    }
+
 }

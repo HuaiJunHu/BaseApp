@@ -1,7 +1,7 @@
 package com.bmit.lib_core.base
 
 import androidx.lifecycle.ViewModel
-import com.bmit.lib_core.manager.SystemManager
+import com.bmit.lib_core.system.SystemManager
 import com.bmit.lib_core.utils.LogUtil
 
 /**

@@ -1,4 +1,4 @@
-package com.bmit.lib_core.utils
+package com.bmit.lib_core.expend
 
 import android.media.MediaMetadata
 import android.media.MediaMetadata.METADATA_KEY_ALBUM_ART_URI

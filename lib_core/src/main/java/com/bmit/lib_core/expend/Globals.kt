@@ -1,10 +1,13 @@
-package com.bmit.lib_core.utils
+package com.bmit.lib_core.expend
 
 import android.app.Application
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
 import android.os.Process
+import android.provider.Settings
 
 /**
  * Author: created by huhuaijun on 2026/9/24 18:07
@@ -52,5 +55,19 @@ fun runOnMain(task: () -> Unit) {
 fun runOnMainWhenIdle(task: () -> Unit) = Looper.getMainLooper().queue.addIdleHandler {
     task()
     false
+}
+
+
+fun Context.isDarkMode(): Boolean{
+    val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+    return currentNightMode == Configuration.UI_MODE_NIGHT_YES
+}
+
+fun getThemeMode() : Int{
+    return Settings.System.getInt(
+        GlobalApp.contentResolver,
+        "bmi_system_theme",
+        0
+    )
 }
 
