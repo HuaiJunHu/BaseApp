@@ -56,7 +56,9 @@ afterEvaluate {
                 from components.release // 打包 release 变体
 
                 // 2. 显式指定 artifactId 为你的子模块名字
+                groupId = 'com.github.huhuaijun'
                 artifactId = 'lib_core'
+                version = '1.0.0'
             }
         }
     }
