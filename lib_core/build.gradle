@@ -48,22 +48,21 @@ kotlin {
     }
 }
 
-// jitpack方式
+
+// JitPack 发布配置
 afterEvaluate {
     publishing {
         publications {
-            // 这里的名称 release 必须与 components.release 对应
             release(MavenPublication) {
-                from components.release // 如果是纯 Kotlin/Java 模块请改为 components.java
+                from components.release
 
-                // 显式指定 artifactId，这样 JitPack 才会识别到子模块
+                groupId = 'com.github.HuaiJunHu'
                 artifactId = 'lib_core'
                 version = '1.0.2'
             }
         }
     }
 }
-
 
 //maven托管方式
 //publishing {
