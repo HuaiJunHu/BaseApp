@@ -57,9 +57,8 @@ afterEvaluate {
                 from components.release // 如果是纯 Kotlin/Java 模块请改为 components.java
 
                 // 显式指定 artifactId，这样 JitPack 才会识别到子模块
-                groupId = 'com.github.HuaiJunHu.BaseApp'
                 artifactId = 'lib_core'
-                version = '1.0.0'
+                version = '1.0.2'
             }
         }
     }
